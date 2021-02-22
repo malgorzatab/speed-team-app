@@ -1,0 +1,109 @@
+.state-container {
+  width: 400px;
+  max-width: 100%;
+  margin: 0 25px 25px 0;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.state-list {
+  //border-top: solid 1px #ccc;
+  //border-left: solid 1px #ccc;
+  //border-right: solid 1px #ccc;
+  min-height: 450px;
+
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  display: block;
+
+
+}
+
+.state-box {
+  padding: 20px 10px;
+  border-bottom: solid 2px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.pic-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+  0 8px 10px 1px rgba(0, 0, 0, 0.14),
+  0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-box:last-child {
+  border: none;
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.tabs-container {
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  padding: 12px;
+  justify-content: center;
+  position: relative;
+  flex-grow: 1;
+}
+
+.state-card {
+  box-shadow:
+    0 2px 1px -1px rgba(0,0,0,.3),
+    0 1px 1px 0 rgba(0,0,0,3.5),
+    0 1px 3px 0 rgba(0,0,0,.2);
+  max-width: 290px;
+}
+
+.add-task {
+ // border-bottom: solid 1px #ccc;
+  border-radius: 4px;
+  text-align: center;
+  background-color: white;
+  border: solid 1px lavender!important;
+  cursor: pointer;
+}
+
+.task-details-card {
+  min-height: 270px;
+  padding: 12px;
+  margin: 7px;
+}
+
+.card-btn {
+  background-color: cornflowerblue;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  height: 40px;
+  padding: 1px;
+  border-radius: 13px;
+}

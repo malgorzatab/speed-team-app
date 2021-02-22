@@ -1,0 +1,31 @@
+table {
+width: 100%;
+}
+
+.table-cont {
+  margin: 30px;
+}
+mat-card {
+  margin: 20px;
+}
+
+mat-toolbar {
+  margin-top: 20px;
+}
+
+.filter {
+
+}
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.newProjectBtn {
+  position: absolute;
+  right: 60px;
+  color: white;
+  background-color: dodgerblue;
+}

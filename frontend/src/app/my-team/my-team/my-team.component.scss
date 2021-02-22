@@ -1,0 +1,31 @@
+.main-cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pic-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.person-card {
+  height: 300px;
+  width: 90%;
+  margin: 15px;
+  display: flex;
+  flex-direction: row;
+}
+
+.person-span {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+  word-wrap: break-word
+}
+
+.p-style {
+  margin-top: 3px;
+  margin-left: 5px;
+}

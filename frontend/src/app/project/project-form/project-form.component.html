@@ -1,0 +1,37 @@
+<mat-card>
+  <!--{{this.projectForm.value | json}}-->
+  <form class="form-container" [formGroup]="projectForm" novalidate (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput placeholder="Project Name" formControlName="name">
+      <mat-error *ngIf="projectForm.controls.name.invalid && projectForm.controls.name.touched">Name is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Project Code" formControlName="code">
+      <mat-error *ngIf="projectForm.controls.code.invalid && projectForm.controls.code.touched">Project code is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Description" formControlName="description"></textarea>
+      <mat-error *ngIf="projectForm.controls.description.invalid && projectForm.controls.description.touched">Description is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="dueDate" placeholder="Choose a due date" formControlName="dueDate">
+      <mat-datepicker-toggle matSuffix [for]="dueDate"></mat-datepicker-toggle>
+      <mat-datepicker #dueDate></mat-datepicker>
+      <mat-error *ngIf="projectForm.controls.dueDate && projectForm.controls.dueDate.touched">Due date is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Select members" formControlName="members" multiple>
+        <mat-option *ngFor="let user of users" [value]="user._id">
+          {{user.username}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!--<mat-form-field>-->
+      <!--<input matInput placeholder="Add task to backlog" formControlName="backlog">-->
+    <!--</mat-form-field>-->
+    <div class="submitBtns">
+      <button mat-raised-button [disabled]="!projectForm.valid" type="submit" color="accent">Save</button>
+      <button mat-raised-button type="reset" style="margin-left: 5px" (click)="onCancel()">Cancel</button>
+    </div>
+  </form>
+</mat-card>

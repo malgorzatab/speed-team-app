@@ -1,0 +1,90 @@
+<div class="pic-title">
+  <img src="../../../assets/scrum.jpg" alt="people-at-work">
+  <!--<h1 style="color: cornflowerblue; font-family: cursive ">Sprint Board</h1>-->
+  <mat-form-field color="accent" style="width: 270px;">
+    <mat-select placeholder="Change project on board" (selectionChange)="selectedProject($event)">
+      <mat-option *ngFor="let project of projects" [value]="project._id">
+        {{project.code}} {{project.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div class="tabs-container">
+<div class="state-container">
+  <mat-card class="state-card" style="background-color: lightgreen">
+    <h2>To do</h2>
+  <div
+    cdkDropList
+    #todoList="cdkDropList"
+    [cdkDropListData]="toDoTasks"
+    [cdkDropListConnectedTo]="[doneList, inProgressList]"
+    class="state-list"
+    id="To do"
+    style="background-color: lightgreen"
+    (cdkDropListDropped)="drop($event)">
+    <mat-card class="state-box"  *ngFor="let data of toDoTasks"  id="{{data._id}}" cdkDrag (click)="showTaskDetails(data._id)">{{data.name}} {{data.storyPoint}}</mat-card>
+  </div>
+    <mat-card class="add-task" (click)="openDialog()">Add task +</mat-card>
+  </mat-card>
+</div>
+
+
+<div class="state-container">
+  <mat-card class="state-card" style="background-color: lightcoral; height: 550px">
+    <h2>In progress</h2>
+  <div
+    cdkDropList
+    #inProgressList="cdkDropList"
+    [cdkDropListData]="inProgressTasks"
+    [cdkDropListConnectedTo]="[todoList, doneList]"
+    class="state-list"
+    style="background-color: lightcoral"
+    id="In progress"
+    (cdkDropListDropped)="drop($event)">
+    <div class="state-box" *ngFor="let elem of inProgressTasks"  id="{{elem._id}}" cdkDrag (click)="showTaskDetails(elem._id)">{{elem.name}} {{elem.storyPoint}}</div>
+  </div>
+    <!--<mat-card class="add-task" (click)="openDialog()">Add task +</mat-card>-->
+  </mat-card>
+</div>
+
+  <div class="state-container">
+    <mat-card class="state-card" style="background-color: lightskyblue; height: 550px">
+      <h2>Done</h2>
+    <div
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="doneTasks"
+      [cdkDropListConnectedTo]="[todoList, inProgressList]"
+      class="state-list"
+      style="background-color: lightskyblue"
+      id="Done"
+      (cdkDropListDropped)="drop($event)">
+      <div class="state-box" *ngFor="let item of doneTasks"  id="{{item._id}}" cdkDrag (click)="showTaskDetails(item._id)">{{item.name}} {{item.storyPoint}}</div>
+    </div>
+      <!--<mat-card class="add-task" (click)="openDialog()">Add task</mat-card>-->
+    </mat-card>
+</div>
+</div>
+<div class="task-display">
+  <mat-card class="task-details-card mat-elevation-z10">
+    <span style="display: flex; flex-direction: row; margin: 5px; word-wrap: break-word"><button mat-button class="card-btn">Task: </button><h2 style="margin-left: 10px; margin-top: 7px ">{{taskName}}</h2>     <button mat-icon-button [matMenuTriggerFor]="menu" [disabled]="!selectedTaskId">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="openDialog(selectedTaskId)">
+        <mat-icon>edit</mat-icon>
+        <span>Edit</span>
+      </button>
+      <button mat-menu-item (click)="deleteTaskBtn(selectedTaskId)" >
+        <mat-icon>delete</mat-icon>
+        <span>Delete</span>
+      </button>
+    </mat-menu></span>
+
+    <span style="display: flex; flex-direction: row; margin: 5px; word-wrap: break-word"><button mat-button class="card-btn">Story point: </button><p style="margin-left: 10px; margin-top: 7px ">{{storyPoint}}</p></span>
+    <span style="display: flex; flex-direction: row; margin: 5px; word-wrap: break-word"><button mat-button class="card-btn">State: </button><p style="margin-left: 10px; margin-top: 7px ">{{taskState}}</p></span>
+    <span style="display: flex; flex-direction: row; margin: 5px; word-wrap: break-word"><button mat-button class="card-btn">Member: </button><p style="margin-left: 10px; margin-top: 7px ">{{taskMemberName}}</p></span>
+    <span style="display: flex; flex-direction: row; margin: 5px; word-wrap: break-word"><button mat-button class="card-btn">Details: </button><p style="margin-left: 10px; margin-top: 7px ">Poprawa błędu podczas obliczania wysokości raty w formularzu F32 podczas procesowania sprawy kredytu hipotecznego.</p></span>
+  </mat-card>
+</div>
